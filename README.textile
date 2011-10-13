@@ -1,0 +1,40 @@
+h1. This is a Hippo Site Toolkit plugin for Spring Insight
+
+Spring Insight runs in the SpringSource tc Server. See http://www.springsource.org/insight for details.
+This plugin adds instrumentation to web applications that use Hippo CMS (http://www.onehippo.org) through the Hippo Site Toolkit.
+
+h2. What does it do?
+
+It instruments calls to the Hippo Site Toolkit. Typical HST Component invocation calls are traced, as are the HstQuery.execute() calls.
+
+h2. Installing the plugin
+
+Get the code: <code>git clone git://github.com/jreijn/insight-plugin-hst.git</code>
+
+Now build it:
+
+<pre>
+<code>
+cd insight-plugin-hst
+mvn clean package
+</code>
+</pre>
+
+You'll need to have tc Server Developer Edition installed. Let's call the location of that <code>tcServer</code>.
+
+Now copy the plugin jar to the right place under <code>tcServer</code>.
+
+<pre>
+<code>
+cp target/insight-plugin-hst-x.x.jar tcServer/spring-insight-instance/insight/collection-plugins
+</code>
+</pre>
+
+h2. Running the plugin
+
+# Start up Spring Insight Server as usual (see the Spring tc Server Developer Edition documentation) and make sure your WAR file is loaded. Start your application and make sure it's running.
+# Browse to http://localhost:8080/insight to see the Spring Insight dashboard. Click on the Administration button and then _Collection Plug-ins_ under _Reports and Statistics_.
+# If you can see the hst plugin it's installed and running.
+# Run through your application in a way you're sure exercises your Hippo Site Toolkit powered website. Then go back to the Spring Insight dashboard to see the traces.
+
+Have fun!
