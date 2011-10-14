@@ -1,6 +1,5 @@
 package com.jeroenreijn.insight.hst;
 
-import com.springsource.insight.collection.method.JoinPointFinalizer;
 import com.springsource.insight.collection.method.MethodOperationCollectionAspect;
 import com.springsource.insight.intercept.operation.Operation;
 import com.springsource.insight.intercept.operation.OperationType;
@@ -8,9 +7,6 @@ import com.springsource.insight.intercept.operation.OperationType;
 import org.aspectj.lang.JoinPoint;
 import org.hippoecm.hst.content.beans.query.HstQuery;
 import org.hippoecm.hst.content.beans.query.exceptions.QueryException;
-import org.hippoecm.hst.core.component.HstRequest;
-import org.hippoecm.hst.core.component.HstRequestImpl;
-import org.hippoecm.hst.core.container.HstComponentWindow;
 
 /**
  * Aspect for collecting HstQuery executions.
@@ -34,7 +30,7 @@ public aspect HstQueryOperationAspect extends MethodOperationCollectionAspect {
             op.put("limit", query.getLimit());
             op.put("offset", query.getOffset());
         } catch (QueryException e) {
-
+            // ignore for now
         }
         return op;
     }
