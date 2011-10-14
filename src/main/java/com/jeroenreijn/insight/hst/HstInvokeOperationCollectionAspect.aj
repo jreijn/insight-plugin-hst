@@ -26,6 +26,7 @@ public aspect HstInvokeOperationCollectionAspect extends MethodOperationCollecti
         String windowName = "";
         String componentClassName = "";
         String simpleComponentClassName = "";
+        String renderPath = "";
 
         if (args.length > 1 && args[1] instanceof HstRequest) {
             HstRequest hstRequest = (HstRequest) args[1];
@@ -34,14 +35,16 @@ public aspect HstInvokeOperationCollectionAspect extends MethodOperationCollecti
             HstComponent component = window.getComponent();
             componentClassName = component.getClass().getName();
             simpleComponentClassName = component.getClass().getSimpleName();
+            renderPath = window.getRenderPath();
         }
 
         Operation op = new Operation()
                 .label("HST component:  " + simpleComponentClassName + "#" + jp.getSignature().getName() + "()")
                 .type(TYPE);
         op.sourceCodeLocation(getSourceCodeLocation(jp));
-        op.put("componentClass",componentClassName);
-        op.put("windowName",windowName);
+        op.put("componentClass", componentClassName);
+        op.put("windowName", windowName);
+        op.put("renderPath", renderPath);
         JoinPointFinalizer.register(op, jp);
         return op;
     }
