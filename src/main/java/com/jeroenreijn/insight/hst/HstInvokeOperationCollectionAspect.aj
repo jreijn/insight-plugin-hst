@@ -17,8 +17,8 @@
  */
 package com.jeroenreijn.insight.hst;
 
+import com.springsource.insight.collection.AbstractOperationCollectionAspect;
 import com.springsource.insight.collection.method.JoinPointFinalizer;
-import com.springsource.insight.collection.method.MethodOperationCollectionAspect;
 import com.springsource.insight.intercept.operation.Operation;
 import com.springsource.insight.intercept.operation.OperationType;
 
@@ -28,15 +28,24 @@ import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstRequestImpl;
 import org.hippoecm.hst.core.container.HstComponentWindow;
 
+import org.hippoecm.hst.core.container.HstContainerConfig;
+import org.hippoecm.hst.core.container.HstComponentInvoker;
+import org.hippoecm.hst.content.beans.query.HstQuery;
+import org.hippoecm.hst.content.beans.query.HstQueryResult;
+
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+
+
 /**
  * Collection aspect for collecting invoke methods on HST components.
  * @author Jeroen Reijn
  */
-public aspect HstInvokeOperationCollectionAspect extends MethodOperationCollectionAspect {
+public aspect HstInvokeOperationCollectionAspect extends AbstractOperationCollectionAspect {
 
     private static final OperationType TYPE = OperationType.valueOf("invoke");
 
-    public pointcut collectionPoint(): HstPointcuts.invoke();
+    public pointcut collectionPoint(): execution(* HstComponentInvoker.*(HstContainerConfig, ServletRequest, ServletResponse));
 
     public Operation createOperation(JoinPoint jp) {
         Object[] args = jp.getArgs();
