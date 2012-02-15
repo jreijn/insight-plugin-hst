@@ -43,7 +43,7 @@ import javax.servlet.ServletResponse;
  */
 public aspect HstInvokeOperationCollectionAspect extends AbstractOperationCollectionAspect {
 
-    private static final OperationType TYPE = OperationType.valueOf("invoke");
+    public static final OperationType TYPE = OperationType.valueOf("invoke");
 
     public pointcut collectionPoint(): execution(* HstComponentInvoker.*(HstContainerConfig, ServletRequest, ServletResponse));
 

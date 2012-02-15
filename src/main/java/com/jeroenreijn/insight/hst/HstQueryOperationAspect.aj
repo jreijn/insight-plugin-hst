@@ -32,7 +32,7 @@ import org.hippoecm.hst.content.beans.query.exceptions.QueryException;
  */
 public aspect HstQueryOperationAspect extends AbstractOperationCollectionAspect {
 
-    private static final OperationType TYPE = OperationType.valueOf("query_execute");
+    public static final OperationType TYPE = OperationType.valueOf("query_execute");
 
     public pointcut collectionPoint(): execution(HstQueryResult HstQuery.execute());
 
