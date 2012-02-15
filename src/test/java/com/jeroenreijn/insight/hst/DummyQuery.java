@@ -18,6 +18,7 @@ import org.hippoecm.hst.content.beans.standard.HippoBean;
 import static org.mockito.Mockito.mock;
 
 /**
+ * Fake query implementaton for test purposes only.
  * @author Jeroen Reijn
  */
 public class DummyQuery implements HstQuery {
@@ -74,15 +75,15 @@ public class DummyQuery implements HstQuery {
     }
 
     public void excludeScopes(final List<HippoBean> scopes) {
-        //To change body of implemented methods use File | Settings | File Templates.
+
     }
 
     public void excludeScopes(final Node[] scopes) {
-        //To change body of implemented methods use File | Settings | File Templates.
+
     }
 
     public void setSkipInvalidScopes(final boolean skipInvalidScopes) {
-        //To change body of implemented methods use File | Settings | File Templates.
+
     }
 
     public HstQueryResult execute() throws QueryException {

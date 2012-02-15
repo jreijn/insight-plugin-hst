@@ -9,6 +9,7 @@ import org.hippoecm.hst.core.component.HstResponse;
 import org.hippoecm.hst.core.request.ComponentConfiguration;
 
 /**
+ * Dummy component for testing purposes.
  * @author Jeroen Reijn
  */
 public class DummyComponent implements HstComponent{

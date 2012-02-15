@@ -3,12 +3,12 @@ package com.jeroenreijn.insight.hst;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
-import org.hippoecm.hst.core.component.HstComponent;
 import org.hippoecm.hst.core.container.ContainerException;
 import org.hippoecm.hst.core.container.HstComponentInvoker;
 import org.hippoecm.hst.core.container.HstContainerConfig;
 
 /**
+ * Dummy component invoker that does nothing for now.
  * @author Jeroen Reijn
  */
 public class DummyHstComponentInvoker implements HstComponentInvoker {
